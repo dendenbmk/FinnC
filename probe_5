@@ -1,0 +1,106 @@
+
+list_otkaz = [1, 2, 3, 4]
+list_otkaz_new =[]
+list_zakaz = [5, 6, 7, 8, 9]
+list_zakaz_new = [5, 6, 7, 8, 9]
+list_not_find = []
+list_otpicano = []
+cod_finish = 555
+# otskanirovano_raz_today = 1
+
+def pic(sh_c):
+    # global otskanirovano_raz_today
+    if sh_c == cod_finish:
+        print(list_zakaz_new, len(list_zakaz_new), 'ЕЩЕ НУЖНО Заказов отсканировать для отгрузки')
+        print(len(list_zakaz) - len(list_zakaz_new), 'Заказов отсканировано для отгрузки')
+        print(len(list_otpicano)-1, 'Всего заказов отсканировано')
+        print(len(list_not_find), 'Всего отсканировано заказов НЕ из сегодняшнего дня')
+        print(len(list_otkaz_new), 'Всего отсканировано  "отказных " заказов')
+        
+
+    
+    if sh_c in list_otpicano:
+        # otskanirovano_raz_today += 1
+        print(sh_c, 'Уже было отсканировано сегодня') # , otskanirovano_raz_today, 'раза')
+        list_otpicano.append(sh_c)
+
+    if sh_c in list_otpicano and sh_c in list_zakaz:
+        print('Было в заказах, НО УЖЕ БЫЛО ОТСКАНИРОВАНО СЕГОДНЯ')
+        
+    if sh_c in list_otpicano and sh_c in list_not_find:
+        print(sh_c, 'Небыло сегодня и УЖЕ БЫЛО отпикано сегодня')
+        # list_otpicano.append(sh_c)
+
+    elif sh_c not in list_zakaz:
+        print(sh_c, 'НЕБЫЛО в заказах сегодня')
+        list_otpicano.append(sh_c)
+        list_not_find.append(sh_c)    
+
+    if sh_c in list_otkaz:
+        print(sh_c, 'ОТКАЗ, нужно Убрать из доставки')
+        list_otpicano.append(sh_c)
+        list_otkaz_new.append(sh_c)
+
+    if sh_c in list_zakaz_new:
+        print( sh_c, 'Отсканили из заказа, удаляем из списка заказано_NEW, добавляем в список отпикано')
+        list_otpicano.append(sh_c)
+        list_zakaz_new.remove(sh_c)
+        
+        
+while True:
+    pic(int(input()))
+
+
+# print()
+# pic(6)
+# print()
+# pic(7)
+# print()
+# pic(8)
+# print()
+# pic(4)
+# print()
+# pic(15)
+# print()
+# pic(15)
+# print()
+# pic(15)
+# print()
+# pic(16)
+# print()
+# pic(16)
+# print()
+
+
+# pic(555)
+# pic(9)
+# print()
+# pic(555)
+
+
+# pic(5)
+# print(list_zakaz, "лист заказ, первая Итерация")
+# print(list_zakaz_new, "лист заказ_New , первая Итерация")
+# print(list_not_find, "лист не найденого в сегодн , первая Итерацияя")
+# print(list_otpicano, "лист отпикано, первая Итерация")
+# print('закончили первую итерацию')
+# print()
+# pic(6)
+# print('закончили Вторую итерацию')
+# print()
+# pic(15)
+# print(list_zakaz, "лист заказ")
+# print(list_zakaz_new, "лист заказ_New")
+# print(list_not_find, "лист не найденого в сегодня")
+# print(list_otpicano, "лист отпикано")
+# print('закончили Третью итерацию')
+# print()
+# pic(15)
+# print(list_zakaz, "лист заказ")
+# print(list_zakaz_new, "лист заказ_New")
+# print(list_not_find, "лист не найденого в сегодня")
+# print(list_otpicano, "лист отпикано")
+# print('закончили Четвертую итерацию')
+# print()
+# pic(15)
+# print(list_otpicano, "лист отпикано")
