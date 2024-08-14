@@ -79,13 +79,13 @@ def pic(sh_c):
         list_otpicano.append(sh_c)
         list_zakaz_new.remove(sh_c)
         
-    print(list_otpicano)
-    print(list_otkaz_new)
-    print()
+    # print(list_otpicano)
+    # print(list_otkaz_new)
+    # print()
     
 while True:
     pic(int(input()))
-print(list_otpicano)
+# print(list_otpicano)
 
 # pic(5)
 # print()
