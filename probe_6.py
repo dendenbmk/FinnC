@@ -42,13 +42,16 @@ cod_finish = 555
 def pic(sh_c):
     # global otskanirovano_raz_today
     if sh_c == cod_finish:
+        # number3_entry_list_ostalos_otgruzit.delete(0, 'end')
         # number3_entry_list_ostalos_otgruzit.insert(0, f'ЕЩЕ НУЖНО {len(list_zakaz_new)} Заказов отсканировать для отгрузки, список заказов ,{list_zakaz_n)
+        # number4_entry_list_otscan_today.delete(0, 'end)'
         # number4_entry_list_otscan_today.insert(0, f'ЕЩЕ НУЖНО {len(list_zakaz_new)} Заказов отсканировать для отгрузки, список заказов ,{list_zakaz_new}')
         print(f'ЕЩЕ НУЖНО {len(list_zakaz_new)} Заказов отсканировать для отгрузки, список заказов ,{list_zakaz_new}')
         print(len(list_zakaz) - len(list_zakaz_new), 'Заказов отсканировано для сегодняшней отгрузки')
         print(len(list_otpicano), 'Всего заказов отсканировано')
         print(len(list_not_find), 'Всего отсканировано заказов НЕ из сегодняшнего дня')
         print(len(list_otkaz_new), 'Всего отсканировано  "отазных " заказов')
+        # number5_entry_list_otscan_otkazov.delete(0, 'end')
         # number5_entry_list_otscan_otkazov.insert(0, f' {len(list_otkaz_new)}, Всего отсканировано  "отказных " заказов')
 
     
