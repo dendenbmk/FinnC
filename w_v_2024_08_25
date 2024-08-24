@@ -4,11 +4,9 @@ freg = 800
 dur = 900
 
 list_otkaz = ['ЗАМЕНИТЬ это номерами отказов, если есть']
-list_not_find = []
-total_scans = 0
 scaned_necessary = 0
+list_not_find = []
 print_list_otkaz = int(333333333333333) # Выведет список отказов
-sum_from_today = int(555555555555555)   # Выведет
 list_ostalos_naiti = int(444444444444444) # Выведет Наш номер ЛС и номер отправления того что не отпикано еще на сегодня
 dict_for_check = { 'ЗАМЕНИТЬ это СЛОВАРЕМ -  ШТРИХ-КОД: ("НАШ НОМЕР ЛС в 1С, НОМЕР отправления")'
                   }
@@ -21,11 +19,7 @@ for key, value in dict_for_check.items():
 list_zakaz_control = list_zakaz.copy()
 
 def pic(sh_cod):
-    global total_scans
     global scaned_necessary
-
-    if sh_cod == sum_from_today:
-        print(f'Отсканировано "Сегодняшних" заказов: {total_scans}, осталось отсканировать {len(list_zakaz)}')
 
     if sh_cod not in list_zakaz and sh_cod in list_zakaz_control:  #  МОЖЕТ ВЫШЕ ПОСТАВИТЬ с Иначе Если???
         print('Этот номер уже БЫЛ Отсканирован сегодня')
@@ -36,7 +30,7 @@ def pic(sh_cod):
         winsound.Beep(freg, dur + 100)
 
     elif sh_cod in list_otkaz:
-        print('OTKAZ')
+        print('ОТКАЗ, УБРАТЬ из доставки и "разобрать".')
         list_otkaz.remove(sh_cod)
         winsound.Beep(freg, dur + 500)
 
@@ -55,13 +49,13 @@ def pic(sh_cod):
     elif sh_cod in list_zakaz:
         scaned_necessary += 1
         list_zakaz.remove(sh_cod)
-        total_scans += 1
         winsound.Beep(freg, dur - 710)
-        print(f'Отсканировану "Нужных" {scaned_necessary}, Осталось отсканировать {len(list_zakaz)}')
+        print(f'Отсканировано "Сегодняшних" заказов {scaned_necessary}, Осталось отсканировать {len(list_zakaz)}')
 
     else:
         pass
 
-while True:
+while len(list_zakaz) > 0:
     pic(int(input()))
-
+else: 
+    print(f'Отсканировано "Сегодняшних" заказов {scaned_necessary}, Осталось отсканировать {len(list_zakaz)}')
